@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, SyntheticEvent } from "react";
 // import AuthService 
 import { AuthService } from '../services/AuthService'
 
@@ -22,16 +22,42 @@ export class Login extends React.Component <LoginProps, LoginState > {
     password: '',
     LoginAttempted: false,
     loginSuccesfull: false
-
   }
 
+  //create local functions for respodning to Login form events
+  private setUserName( event: ChangeEvent ) {
+    this.setState({ userName: (event.target as HTMLInputElement).value })
+  }
+
+  private setPassword( event: ChangeEvent ) {
+    this.setState({ password: (event.target as HTMLInputElement).value })
+  }
+
+  private async handleSubmit( event: SyntheticEvent){
+    //prevent Login component for re-rendering
+    event.preventDefault();
+    // use authService worker to Login with form data 
+    const result = await this.props.authService.login(
+      this.state.userName,
+      this.state.password
+    )
+    // lof result of login attempt 
+    if( result ){
+      console.log( result )
+    }
+    else{
+      console.log('Inccorect Login')
+    }
+  }
+
+  //render Login Component with Form to capture data
     render() {
       return (
         <div>
           <h1> Please Login </h1>
-          <form>
-            <input value={ this.state.userName } type='text' ></input><br/>
-            <input value={ this.state.password }  type='password' ></input><br/>
+          <form onSubmit={ e => this.handleSubmit(e) } >
+            <input  type='text' value={ this.state.userName } onChange={ e=> this.setUserName(e) } ></input><br/>
+            <input  type='pasword' value={ this.state.password } onChange={ e=> this.setPassword(e) } ></input><br/>
             <button type='submit' >Login</button>
           </form>
         </div>

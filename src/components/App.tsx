@@ -1,6 +1,8 @@
 import React from 'react';
-// import of User tpye interface 
+// import of User type interface 
 import { User } from '../types/User'
+//import class AuthService fro local authentication
+import { AuthService } from '../services/AuthService' 
 
 // creater intial state for App component
 interface AppState {
@@ -8,7 +10,10 @@ interface AppState {
 }
 
 
-export class App extends React.Component {
+export class App extends React.Component<{}, AppState> {
+
+  //intialize new authservice object for child components
+  private authservice: AuthService = new AuthService();
   
   render(){
     return(

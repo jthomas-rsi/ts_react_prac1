@@ -1,6 +1,6 @@
 import React from 'react';
 import { User } from '../types/User'
-class AuthService {
+export class AuthService {
     public async login( userName: string, password: string ): Promise<User | undefined>{
         if( userName === 'user' && password === '1234' ) {
             return {
@@ -14,6 +14,4 @@ class AuthService {
         }
 
     }
-} 
-
-export default AuthService;
+};

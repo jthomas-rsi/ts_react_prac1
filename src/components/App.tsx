@@ -1,8 +1,10 @@
 import React from 'react';
 // import of User type interface 
 import { User } from '../types/User'
-//import class AuthService fro local authentication
+//import class AuthService from local authentication
 import { AuthService } from '../services/AuthService' 
+//import Login app
+import { Login } from './Login'
 
 // creater intial state for App component
 interface AppState {
@@ -18,6 +20,7 @@ export class App extends React.Component<{}, AppState> {
   render(){
     return(
       <div>
+        <Login />
         Class App Working!
       </div>
     )

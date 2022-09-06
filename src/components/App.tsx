@@ -20,8 +20,8 @@ export class App extends React.Component<{}, AppState> {
   render(){
     return(
       <div>
-        <Login authService={this.authservice}/>
         Class App Working!
+        <Login authService={this.authservice}/>
       </div>
     )
   }

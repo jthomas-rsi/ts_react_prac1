@@ -27,7 +27,14 @@ export class Login extends React.Component <LoginProps, LoginState > {
 
     render() {
       return (
-        <div> Login Working!! </div>
+        <div>
+          <h1> Please Login </h1>
+          <form>
+            <input value={ this.state.userName } type='text' ></input><br/>
+            <input value={ this.state.password }  type='password' ></input><br/>
+            <button type='submit' >Login</button>
+          </form>
+        </div>
       )
     }
   }

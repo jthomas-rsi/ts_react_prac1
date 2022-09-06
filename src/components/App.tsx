@@ -1,11 +1,31 @@
 import React from 'react';
+// import of User tpye interface 
+import { User } from '../types/User'
 
-function App() {
-  return (
-    <div>
-      App Working
-    </div>
-  );
+// creater intial state for App component
+interface AppState {
+  user: User | undefined
 }
 
-export default App;
+
+export class App extends React.Component {
+  
+  render(){
+    return(
+      <div>
+        Class App Working!
+      </div>
+    )
+  }
+
+}
+
+// function App() {
+//   return (
+//     <div>
+//       App Working
+//     </div>
+//   );
+// }
+
+// export default App;

@@ -1,10 +1,12 @@
 import React, { ChangeEvent, SyntheticEvent } from "react";
 // import AuthService
 import { AuthService } from "../services/AuthService";
+import { User } from "../types/User";
 
 // define key values of component intial state and props
 interface LoginProps {
   authService: AuthService;
+  setUser:( user: User) => void;
 }
 interface LoginState {
   userName: string;
@@ -24,14 +26,17 @@ export class Login extends React.Component<LoginProps, LoginState> {
   };
 
   //create local functions for respodning to Login form events
+  //set User Name to state
   private setUserName(event: ChangeEvent) {
     this.setState({ userName: (event.target as HTMLInputElement).value });
   }
-
+  
+  //set User password to state
   private setPassword(event: ChangeEvent) {
     this.setState({ password: (event.target as HTMLInputElement).value });
   }
-
+  
+  // handle form submission
   private async handleSubmit(event: SyntheticEvent) {
     //prevent Login component for re-rendering
     event.preventDefault();
@@ -39,17 +44,23 @@ export class Login extends React.Component<LoginProps, LoginState> {
     // update loginAttempted prop
     this.setState({ LoginAttempted: true });
 
-    // use authService worker to Login with form data
+    // use authService service worker to Login with form data
     const result = await this.props.authService.login(
       this.state.userName,
       this.state.password
     );
 
+
+
     // log result of login attempt
     //update LoginState loginSuccesfull value
     if (result) {
-      console.log(result);
+      // console.log(result);
+      // update login flag to true
       this.setState({ loginSuccesfull: true });
+      // set User state value
+      this.props.setUser(result)
+
     } else {
       console.log("Inccorect Login");
       this.setState({ loginSuccesfull: false });

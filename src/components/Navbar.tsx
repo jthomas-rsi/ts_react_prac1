@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { User } from '../types/User'
 
 
-export class Navbar extends React.Component<{ user: User }> {
+export class Navbar extends React.Component<{ user: User | undefined }> {
 
     render(): React.ReactNode {
         //create variable for conditional rendering of Login and Logout components 
@@ -18,14 +18,14 @@ export class Navbar extends React.Component<{ user: User }> {
         }
         else{
             // if user prop is undefined
-            showLoginOrOut = <Link to='/logout' > { 'Login' } </Link>
+            showLoginOrOut = <Link to='/login' > { 'Login' } </Link>
         } 
 
 
         return (
             <div className="navbar">
-                <Link to='/profile'></Link>
-                <Link to='/'>Home</Link>
+                <Link to='/'> Home </Link>
+                <Link to='/profile'> Profile </Link>
                 { showLoginOrOut }
             </div>
         )

@@ -1,13 +1,17 @@
+//dependcies 
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom'
-// import of User type interface 
+import { Router, Route, Switch } from 'react-router-dom';
+
+// import local helpers  
 import { User } from '../types/User'
-//import class AuthService from local authentication
-import { AuthService } from '../services/AuthService' 
-//import Login app
-import { Login } from './Login'
-//import hstory function
-import history from '../utils/history'
+import { AuthService } from '../services/AuthService';
+import history from '../utils/history';
+
+// import local components
+import { Login } from './Login';
+import { Navbar } from './Navbar';
+import { Home } from './Home';
+import { Profile } from './Profile';
 
 // creater intial state for App component
 interface AppState {
@@ -20,6 +24,10 @@ export class App extends React.Component<{}, AppState> {
   //bind properties to component clas with constructor function
   constructor(props: any){
     super(props)
+
+    this.state = {
+      user: undefined
+    }
 
     this.setUser = this.setUser.bind(this)
   }
@@ -41,8 +49,19 @@ export class App extends React.Component<{}, AppState> {
   render(){
     return(
       <div className='wrapper'>
-        <Router history={ history }/>
-          {/* <Login authService={this.authservice} setUser={this.setUser} /> */}
+        <Router history={ history }>
+          <div>
+            <Navbar user={ this.state.user } />
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login' >
+                <Login authService={this.authservice} setUser={this.setUser} />
+              </Route>
+              <Route exact path='/profile' component={Profile} />
+            </Switch>
+          </div>
+
+        </Router>
       </div>
     )
   }

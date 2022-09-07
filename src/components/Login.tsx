@@ -2,6 +2,7 @@ import React, { ChangeEvent, SyntheticEvent } from "react";
 // import AuthService
 import { AuthService } from "../services/AuthService";
 import { User } from "../types/User";
+import history  from '../utils/history'
 
 // define key values of component intial state and props
 interface LoginProps {
@@ -50,8 +51,6 @@ export class Login extends React.Component<LoginProps, LoginState> {
       this.state.password
     );
 
-
-
     // log result of login attempt
     //update LoginState loginSuccesfull value
     if (result) {
@@ -60,6 +59,8 @@ export class Login extends React.Component<LoginProps, LoginState> {
       this.setState({ loginSuccesfull: true });
       // set User state value
       this.props.setUser(result)
+      //redirect user to rpfile page after succesful login attempt
+      history.push('/profile')
 
     } else {
       console.log("Inccorect Login");

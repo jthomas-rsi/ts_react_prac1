@@ -14,11 +14,11 @@ export class Navbar extends React.Component<{ user: User | undefined }> {
         //check the value of the user prop
         if( this.props.user ){
             // if user prop is not undefined 
-            showLoginOrOut = <Link to='/logout' > { this.props.user.userName } </Link>
+            showLoginOrOut = <Link to='/logout' style={{float: 'right'}} > { this.props.user.userName } </Link>
         }
         else{
             // if user prop is undefined
-            showLoginOrOut = <Link to='/login' > { 'Login' } </Link>
+            showLoginOrOut = <Link to='/login' style={{float: 'right'}}  > { 'Login' } </Link>
         } 
 
 

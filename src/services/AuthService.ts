@@ -1,5 +1,5 @@
 import React from 'react';
-import { User } from '../types/User'
+import { User } from '../types/Types'
 export class AuthService {
     public async login( userName: string, password: string ): Promise<User | undefined>{
         if( userName === 'user' && password === '1234' ) {

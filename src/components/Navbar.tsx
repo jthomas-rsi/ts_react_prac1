@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 //import User type from local folder
-import { User } from '../types/User'
+import { User } from '../types/Types'
 
 
 export class Navbar extends React.Component<{ user: User | undefined }> {

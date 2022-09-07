@@ -1,7 +1,7 @@
 import React, { ChangeEvent, SyntheticEvent } from "react";
 // import AuthService
 import { AuthService } from "../services/AuthService";
-import { User } from "../types/User";
+import { User } from "../types/Types";
 import history  from '../utils/history'
 
 // define key values of component intial state and props

@@ -3,7 +3,7 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 
 // import local helpers  
-import { User } from '../types/User'
+import { User } from '../types/Types'
 import { AuthService } from '../services/AuthService';
 import history from '../utils/history';
 
@@ -57,7 +57,9 @@ export class App extends React.Component<{}, AppState> {
               <Route exact path='/login' >
                 <Login authService={this.authservice} setUser={this.setUser} />
               </Route>
-              <Route exact path='/profile' component={Profile} />
+              <Route exact path='/profile'>
+                <Profile authService={this.authservice} user={this.state.user} />
+              </Route>
             </Switch>
           </div>
 

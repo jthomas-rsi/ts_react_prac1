@@ -12,6 +12,8 @@ import { Login } from './Login';
 import { Navbar } from './Navbar';
 import { Home } from './Home';
 import { Profile } from './Profile';
+import { Spaces } from '../components/Spaces'
+import { DataService } from '../services/DataService';
 
 // creater intial state for App component
 interface AppState {
@@ -35,6 +37,9 @@ export class App extends React.Component<{}, AppState> {
 
   //intialize new authservice object for child components
   private authservice: AuthService = new AuthService();
+  
+  //intialize new dataService object for child components 
+  private dataService: DataService = new DataService();
 
   //initialize setUser function from Login.tsx
   private setUser(user: User){ 
@@ -60,6 +65,9 @@ export class App extends React.Component<{}, AppState> {
               <Route exact path='/profile'>
                 <Profile authService={this.authservice} user={this.state.user} />
               </Route>
+              <Route exact path='/spaces' >
+                <Spaces dataService={this.dataService}/>
+              </Route>
             </Switch>
           </div>
 
@@ -68,14 +76,4 @@ export class App extends React.Component<{}, AppState> {
     )
   }
 
-}
-
-// function App() {
-//   return (
-//     <div>
-//       App Working
-//     </div>
-//   );
-// }
-
-// export default App;
+};

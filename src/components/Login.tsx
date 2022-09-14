@@ -82,7 +82,7 @@ export class Login extends React.Component<LoginProps, LoginState> {
 
     return (
       <div>
-        <h1> Please Login </h1>
+        <h1>Please Login</h1>
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <input
             type="text"
@@ -96,7 +96,7 @@ export class Login extends React.Component<LoginProps, LoginState> {
             onChange={(e) => this.setPassword(e)}
           ></input>
           <br />
-          <button type="submit">Login</button>
+          <button type="submit" value={"Login"}>Login</button>
         </form>
         {loginMessage}
       </div>
